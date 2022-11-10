@@ -5,7 +5,7 @@ $(document).ready(function () {
     $("#currentDay").text(currentDay);
 
 
-    // local storage saving custom description of day's plans
+    // localstorage saving user's input of day's plans
     function planDay() {
         $(".hour").each(function() {
             var blockHour = $(this).text();
