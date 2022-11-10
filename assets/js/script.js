@@ -1,13 +1,19 @@
 $(document).ready(function () {
+    var currentDay = moment().format("dddd, MMMM Do, h:mm a");
+    currentDay = $("#currentDay");
+    var hour = $(".hour");
+    var timeBlock = $(".time-block");
+    var saveBtn = $(".saveBtn");
+
 
     // display current day and date with moment()
-    var currentDay = moment().format("dddd, MMMM Do, h:mm a")
-    $("#currentDay").text(currentDay);
+    currentDay.text(currentDay);
 
 
     // localstorage saving user's input of day's plans
     function planDay() {
-        $(".hour").each(function() {
+
+        hour.each(function() {
             var blockHour = $(this).text();
             var schedule = localStorage.getItem(blockHour);
 
@@ -22,7 +28,7 @@ $(document).ready(function () {
     function currentHour() {
         var momentHour = moment().hour();
 
-        $(".time-block").each(function() {
+        timeBlock.each(function() {
             var blockHour = parseInt($(this).attr("id"));
             console.log(blockHour, momentHour)
 
@@ -38,7 +44,7 @@ $(document).ready(function () {
 
     
     // save button
-    $(".saveBtn").on("click", function () {
+    saveBtn.on("click", function () {
         var text = $(this).siblings(".description").val();
         var time = $(this).siblings(".hour").text();
 
